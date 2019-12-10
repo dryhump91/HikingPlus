@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace HikingPlus 
 {
-    class Admin : User
+    class Admin : Superuser
     {
         
 
@@ -16,11 +16,12 @@ namespace HikingPlus
 
         }
 
-        public static void deleteUsers(List<User> userlist)
+        public override void deleteusers(List<User> userlist)
         {
             Globallist.UserList.Clear();
         }
 
+        //example of intitial method being "polymorphed"
         public void Greeting()
         {
             MessageBox.Show("Welcome Admin!");
