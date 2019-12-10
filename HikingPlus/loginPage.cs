@@ -12,6 +12,8 @@ namespace HikingPlus
 {
     public partial class loginPage : Form
     {
+        User user1 = new User("admin", "root", true);
+
         public loginPage()
         {
             InitializeComponent();
@@ -22,6 +24,7 @@ namespace HikingPlus
 
         private void login_btn_Click(object sender, EventArgs e)
         {
+            User user = new User();
             if (string.IsNullOrWhiteSpace(userName_txtbx.Text) && (string.IsNullOrWhiteSpace(password_txtbx.Text)))
             {
                 MessageBox.Show("Please enter the following: " + "\n" + "Username" + "\n" + "Password");
@@ -36,19 +39,29 @@ namespace HikingPlus
             }
             else
             {
-                bool contains = User.UserList.Any(p => p.userName == userName_txtbx.Text );
-                bool contains2 = User.UserList.Any(s => s.password == password_txtbx.Text);
-
-                if (contains && contains2)
+                bool contains = Globallist.UserList.Any(p => p.userName == userName_txtbx.Text );
+                bool contains2 = Globallist.UserList.Any(s => s.password == password_txtbx.Text);
+                bool contains3 =Globallist.UserList.Any(i => i.admin == true);
+                if (contains && contains2 && contains3)
                 {
                     MessageBox.Show("Login successful");
 
                     this.Hide();
-                    Form1 form1 = new Form1();
+                    Form1 form1 = new Form1(user1.admin);
                     form1.ShowDialog();
                     this.Close();
                     
                     
+                }
+                else if(contains && contains2)
+                {
+                   
+                    MessageBox.Show("Login successful");
+
+                    this.Hide();
+                    Form1 form1 = new Form1(user.admin);
+                    form1.ShowDialog();
+                    this.Close();
                 }
                 else
                 {
@@ -66,9 +79,9 @@ namespace HikingPlus
             }
             else
             {
-                User user = new User(userName_txtbx.Text, password_txtbx.Text);
+                User user = new User(userName_txtbx.Text, password_txtbx.Text, false);
 
-                bool contains = User.UserList.Any(p => p.userName == userName_txtbx.Text);
+                bool contains = Globallist.UserList.Any(p => p.userName == userName_txtbx.Text);
 
                 if (contains)
                 {
@@ -79,8 +92,10 @@ namespace HikingPlus
                     MessageBox.Show("User creation successful");
                     User.AddUserToList(user);
 
-                    Form1 form1 = new Form1();
+                    this.Hide();
+                    Form1 form1 = new Form1(false);
                     form1.ShowDialog();
+                    this.Close();
                 }
 
                 //if (User.UserList.Contains(new User(userName_txtbx.Text., password_txtbx.Text)))

@@ -16,7 +16,7 @@ namespace HikingPlus
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            User user1 = new User("admin", "root");
+            User user1 = new User("admin", "root", true);
             User.AddUserToList(user1);
             Application.Run(new loginPage());
             

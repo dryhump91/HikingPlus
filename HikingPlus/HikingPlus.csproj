@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -53,12 +54,15 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Form2.cs" />
+    <Compile Include="Globallist.cs" />
+    <Compile Include="ITooltip.cs" />
     <Compile Include="loginPage.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="loginPage.Designer.cs">
       <DependentUpon>loginPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="newhike.cs" />
     <Compile Include="NewHikeInputForm.cs">
       <SubType>Form</SubType>
     </Compile>
