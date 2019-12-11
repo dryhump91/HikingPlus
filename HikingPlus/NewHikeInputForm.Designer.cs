@@ -67,7 +67,6 @@
             // 
             // Miles_toolTip
             // 
-            this.Miles_toolTip.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip1_Popup);
             // 
             // Miles_lbl
             // 

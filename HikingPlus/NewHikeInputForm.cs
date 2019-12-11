@@ -12,6 +12,8 @@ namespace HikingPlus
 {
     public partial class NewHikeInputForm : Form, ITooltip
     {
+
+        #region NewHikeInputForm Properties
         private static string hikeName;
         private static string hikeMiles;
         private static string hikeHours;
@@ -25,39 +27,44 @@ namespace HikingPlus
         public static DateTime HikeDate { get => hikeDate; set => hikeDate = value; }
         public static string HikeDifficulty { get => hikeDifficulty; set => hikeDifficulty = value; }
 
-       
+        #endregion
 
+        #region NewHikeInputForm Constructors
         public NewHikeInputForm()
         {
             InitializeComponent();
             ToolTip();
 
         }
+        #endregion
 
-        private void toolTip1_Popup(object sender, PopupEventArgs e)
-        {
-
-        }
+        #region NewHikeInputForm Methods
         public void ToolTip()
         {
             MessageBox.Show("Welcome to the New Hike input section!" + "\n" + "Please fill out all sections!");
         }
-        
-
+        #endregion
+        #region NewHikeInputForm Events
         private void Submit_btn_Click(object sender, EventArgs e)
         {
-            newhike newhike = new newhike(Name_txtbx.Text, Miles_txtbx.Text, Hours_txtbx.Text, this.dateTimePicker1.Value.Date, Difficulty_trackBar.Value.ToString());
-            //newhike.HikeName = Name_txtbx.Text;
-            //newhike.HikeMiles = Miles_txtbx.Text;
-            //newhike.HikeHours = Hours_txtbx.Text;
-            //newhike.HikeDate = this.dateTimePicker1.Value.Date;
-            //newhike.HikeDifficulty = Difficulty_trackBar.Value.ToString();
-
-            this.Hide();
-            Form1 form1 = new Form1(newhike);
-            form1.ShowDialog();
-            this.Close();
-
+            decimal numeric;
+            decimal hoursNum;
+            if(decimal.TryParse(Miles_txtbx.Text, out numeric) && decimal.TryParse(Hours_txtbx.Text, out hoursNum))
+            {
+                newhike newhike = new newhike(Name_txtbx.Text, Miles_txtbx.Text, Hours_txtbx.Text, this.dateTimePicker1.Value.Date, Difficulty_trackBar.Value.ToString());
+                this.Hide();
+                Form1 form1 = new Form1(newhike);
+                form1.ShowDialog();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Invalid new hike information" + "\n" + "Miles and hours must be numeric.");
+                Miles_txtbx.Clear();
+                Hours_txtbx.Clear();
+            }        
         }
+        #endregion
+
     }
 }

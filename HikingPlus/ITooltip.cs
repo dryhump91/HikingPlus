@@ -8,6 +8,8 @@ namespace HikingPlus
 {
     interface ITooltip
     {
+        //usable by any form that needs a tooltip to pop up
+        //Also interface usage
         void ToolTip();
         
         

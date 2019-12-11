@@ -9,13 +9,15 @@ namespace HikingPlus
 {
     class Admin : Superuser
     {
-        
 
-       public Admin()
+        #region Admin Constructor
+        public Admin()
         {
 
         }
-
+        #endregion
+        #region Admin Methods
+        //abstract override example
         public override void deleteusers(List<User> userlist)
         {
             Globallist.UserList.Clear();
@@ -26,6 +28,7 @@ namespace HikingPlus
         {
             MessageBox.Show("Welcome Admin!");
         }
-
+        #endregion
+    
     }
 }

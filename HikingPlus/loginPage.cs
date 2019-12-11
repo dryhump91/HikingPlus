@@ -12,6 +12,7 @@ namespace HikingPlus
 {
     public partial class loginPage : Form
     {
+        //not secure, but without having a database to pull from I needed this stored
         User user1 = new User("admin", "root", true);
 
         public loginPage()
@@ -19,9 +20,9 @@ namespace HikingPlus
             InitializeComponent();
         }
 
-        
-        
 
+
+        #region LoginPage Events
         private void login_btn_Click(object sender, EventArgs e)
         {
             User user = new User();
@@ -98,16 +99,9 @@ namespace HikingPlus
                     this.Close();
                 }
 
-                //if (User.UserList.Contains(new User(userName_txtbx.Text., password_txtbx.Text)))
-                //{
-                //    MessageBox.Show("Username already taken." + "\n" + "Please select another");
-                //}
-                //else
-                //{
-                //    User.AddUserToList(user);
-                //}
-
+               
             }
         }
+        #endregion
     }
 }

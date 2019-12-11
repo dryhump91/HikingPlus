@@ -7,6 +7,7 @@ using System.Windows.Forms;
 
 namespace HikingPlus
 {
+    //bad example of an "Abstract" class, but it is what I could do with my scope shifting
     abstract class Superuser
     {
         public abstract void deleteusers(List<User> userlist);

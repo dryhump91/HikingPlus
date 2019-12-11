@@ -9,13 +9,16 @@ namespace HikingPlus
         //public static string hikeName;
         //public static string miles;
         //public static string hours;
+
+        #region Form1 Objects
         DataTable table = new DataTable();
         newhike hike = new newhike();
         User user = new User();
         Admin adminUser = new Admin();
-        
 
+        #endregion
 
+        #region Form1 Constructors
         public Form1()
         {
             InitializeComponent();
@@ -44,11 +47,15 @@ namespace HikingPlus
             this.hike.HikeDate = newhike.HikeDate;
             this.hike.HikeDifficulty = newhike.HikeDifficulty;
         }
+        #endregion
+
+        #region Form1 Methods
         public void ToolTip()
         {
             MessageBox.Show("Welcome to Hiking Plus!" + "\n" + "The only features available right now are the new hike feature." + "\n" + "When you finish with the new hike form please hit the reload button and your hike should appear.");
         }
-
+        #endregion
+        #region Form1 Events
         private void NewHike_Btn_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -90,5 +97,6 @@ namespace HikingPlus
 
             dataGridView1.DataSource = table;
         }
+        #endregion
     }
 }
